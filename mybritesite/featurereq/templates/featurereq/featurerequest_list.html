@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block title %}New Feature Request added{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h1>Feature Requests</h1>
+        </div>
+        {% bootstrap_messages %}
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Client</th>
+                <th>Priority</th>
+                <th>Product Area</th>
+                <th>Target Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for featurerequest in feature_requests %}
+                <tr>
+                  <td><a href="{% url 'featurereq:detail' featurerequest.pk %}">{{ featurerequest.title }}</a></td>
+                  <td>{{ featurerequest.client }}</td>
+                  <td>{{ featurerequest.client_priority }}</td>
+                  <td>{{ featurerequest.product_area }}</td>
+                  <td>{{ featurerequest.target_date }}</td>
+
+                  <td>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
