@@ -1,0 +1,17 @@
+{% load static from staticfiles %}
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+
+        {% block static %}{% endblock %}
+    </head>
+    <body>
+        <div class="site-container">
+                <a href="{% url 'featurerequest_list'%}">Projects</a>
+
+        {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

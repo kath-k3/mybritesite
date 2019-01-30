@@ -3,6 +3,7 @@ from .models import Client, FeatureRequest, ProductArea
 from .forms import FeatureRequestForm
 from django.contrib import messages
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class FeatureRequestCreateView(CreateView):
@@ -18,14 +19,13 @@ class FeatureRequestCreateView(CreateView):
         return super().form_valid(form)
 
 
-class FeatureRequestUpdateView(UpdateView):
+class FeatureRequestUpdateView(SuccessMessageMixin, UpdateView):
     model = FeatureRequest
     form_class = FeatureRequestForm
     #fields = '__all__'
-    success_msg = "Feature Request updated!"
+    success_message = "Feature Request updated!"
     context_object_name = 'feature_request'
     template_name = 'featurereq/featurerequest_update.html'
-
 
 
 class FeatureRequestDetailView(DetailView):
